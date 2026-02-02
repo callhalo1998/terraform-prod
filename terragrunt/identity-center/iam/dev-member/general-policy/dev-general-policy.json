@@ -1,0 +1,65 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "ReadCloudWatchLogs",
+      "Effect": "Allow",
+      "Action": [
+        "logs:DescribeLogGroups",
+        "logs:DescribeLogStreams",
+        "logs:GetLogEvents",
+        "logs:FilterLogEvents",
+        "logs:StartQuery",
+        "logs:GetQueryResults"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "ReadECSEventsAndTasks",
+      "Effect": "Allow",
+      "Action": [
+        "ecs:DescribeClusters",
+        "ecs:DescribeServices",
+        "ecs:DescribeTasks",
+        "ecs:DescribeTaskDefinition",
+        "ecs:ListClusters",
+        "ecs:ListServices",
+        "ecs:ListTasks",
+        "ecs:ListTaskDefinitions",
+        "ecs:ListTaskDefinitionFamilies"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "DynamoDBReadOnly",
+      "Effect": "Allow",
+      "Action": [
+        "dynamodb:BatchGetItem",
+        "dynamodb:DescribeTable",
+        "dynamodb:ListTables",
+        "dynamodb:GetItem",
+        "dynamodb:Query",
+        "dynamodb:Scan",
+        "dynamodb:DescribeTimeToLive"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "EventBridgeAccess",
+      "Effect": "Allow",
+      "Action": [
+        "events:ListRules",
+        "events:ListEventBuses",
+        "events:ListConnections",
+        "events:ListTargetsByRule",
+        "events:DescribeRule",
+        "events:DescribeEventBus",
+        "events:DescribeConnection",
+        "events:DescribeApiDestination",
+        "events:ListApiDestinations",
+        "events:PutEvents"
+      ],
+      "Resource": "*"
+    }
+  ]
+}

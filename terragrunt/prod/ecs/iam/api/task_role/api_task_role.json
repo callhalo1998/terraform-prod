@@ -1,0 +1,35 @@
+{
+    "Statement": [
+        {
+            "Action": [
+                "s3:GetObject",
+                "s3:PutObject",
+                "s3:DeleteObject",
+                "s3:ListBucket"
+            ],
+            "Effect": "Allow",
+            "Resource": [
+                "arn:aws:s3:::prod--public-data",
+                "arn:aws:s3:::prod--public-data/*"
+            ]
+        },
+        {
+            "Action": [
+                "sqs:SendMessage",
+                "sqs:ReceiveMessage",
+                "sqs:DeleteMessage",
+                "sqs:GetQueueAttributes"
+            ],
+            "Effect": "Allow",
+            "Resource": "arn:aws:sqs:eu-west-3::-SQS-Notification-Prod"
+        },
+        {
+            "Action": [
+                "sns:Publish"
+            ],
+            "Effect": "Allow",
+            "Resource": "arn:aws:sns:eu-west-3:*:prod-*"
+        }
+    ],
+    "Version": "2012-10-17"
+}
