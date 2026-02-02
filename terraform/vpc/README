@@ -1,0 +1,27 @@
+vpc/main.tf can be used by two ways
+
+1. Use terragrunt to seperately manage VPC and its components. 
+   This structure makes it easier to scale and manage resources when demand grows.
+   Take a look at examples/ for more detail.
+
+    vpc-dev (terraform {source = "https://path-to-module/vpc?ref=develop"})
+    |_root.hcl
+    |_vpc/terragrunt.hcl
+    |_nat-gw/terragrunt.hcl
+    |_private_subnet/terragrunt.hcl
+    |_public_subnet/terragrunt.hcl
+    |_nacl/terragrunt.hcl
+
+    vpc-prod (terraform {source = "https://path-to-module/vpc?ref=main"})
+    |_root.hcl
+    |_vpc/terragrunt.hcl
+    |_nat-gw/terragrunt.hcl
+    |_private_subnet/terragrunt.hcl
+    |_public_subnet/terragrunt.hcl
+    |_nacl/terragrunt.hcl
+
+2.  Use another main.tf to manage VPC and its components together.
+    This structure is simpler when managing fewer resources.
+
+    vpc-dev/main.tf  (terraform {source = "https://path-to-module/vpc?ref=develop"})
+    vpc-prod/main.tf (terraform {source = "https://path-to-module/vpc?ref=main"})
